@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Homepage from './homepage'
+// import 'semantic-ui-css/semantic.min.css';
+// import Homepage from './homepage'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Homepage />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import logo from './logo.svg';
 import './homepage.css';
+import {Link, Route} from 'react-router-dom';
+import { Segment, Menu, Image } from 'semantic-ui-react';
 
 class Homepage extends React.Component {
 
@@ -92,7 +94,23 @@ alert('Author ' + aName + "'s details have been deleted from the database");
 render() {
 return (
     <div className="main">
-      <label className="title">GOOGLE SCHOLAR VISUALIZER</label>
+      <h1 style={{textAlign: 'center', fontWeight: 'bold',paddingTop: "2em", background: "#dbc537", color: "white",fontSize: '30px'}}>Hey everyone, we are RUNTIME TERROR! <br/><br/> </h1>
+
+    <div className="nav">
+      <Menu>
+            <Menu.Item>    
+                <Link to="/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
+                    <div>Home</div>
+                </Link>
+            </Menu.Item> 
+            <Menu.Item>
+                <Link to="/advancedPage" style={{color:'black'}}>
+                    <div>Advanced Page</div>
+                </Link>
+            </Menu.Item>
+            </Menu>
+      </div>
+
       <hr className="line" />
       
       <div className="insertDiv">
