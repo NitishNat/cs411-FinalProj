@@ -5,9 +5,9 @@ var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "Nit123#$root",
-  database: "google_scholar"
+  user: "admin",
+  password: "106126",
+  database: "GoogleScholar"
 });
 
 /* GET home page. */
