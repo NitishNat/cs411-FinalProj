@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import logo from './logo.svg';
 import './homepage.css';
 import {Link, Route} from 'react-router-dom';
 import { Segment, Menu, Image } from 'semantic-ui-react';
@@ -41,22 +40,6 @@ alert('Author ' + aName + "'s details have been inserted into the database!");
         });
 }
 
-handleReadClick() {
-let authorName = document.getElementById('readName').value;
-const requestOptions = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-    };
-fetch('http://localhost:3002/researcherData?name=' + authorName, requestOptions)
-.then(response => response.json())
-.then(data => {
-let result = "ID :" + data[0].author_id + ", Name : " + data[0].author_name + ", Affiliation : " + data[0].affiliation + ", Total Citations : " + data[0].total_citations + ", Interests : " + data[0].interests + ", Picture URL : " + data[0].url_picture;
-alert(result);
-})
-.catch(error => {
-            alert("No such Author exists in the database!");
-        });
-}
 
 handleUpdateClick() {
 let aName = document.getElementById('updateName').value;
@@ -91,6 +74,8 @@ alert('Author ' + aName + "'s details have been deleted from the database");
         });
 }
 
+// handlePopularClick(){<Link to="/advancedPage/"></Link>}
+
 render() {
 return (
     <div className="main">
@@ -98,14 +83,21 @@ return (
 
     <div className="nav">
       <Menu>
-            <Menu.Item>    
+            <Menu.Item style = {{flexDirection: 'row',width: "10%",margin: 0}}>    
                 <Link to="/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
-                    <div>Home</div>
+                    <div>Modify Database</div>
                 </Link>
             </Menu.Item> 
+            {/* <Menu.Item style = {{flexDirection: 'row',width: "10%",margin: 0, backgroundColor: "yellow"}}>
+             */}
             <Menu.Item>
-                <Link to="/advancedPage" style={{color:'black'}}>
-                    <div>Advanced Page</div>
+                <Link to="/searchpage/" style={{color:'black'}}>
+                    <div>Search for Authors</div>
+                </Link>
+            </Menu.Item>
+            <Menu.Item>
+                <Link to="/advancedpage/" style={{color:'black'}}>
+                    <div>Popular Authors</div>
                 </Link>
             </Menu.Item>
             </Menu>
@@ -127,14 +119,6 @@ return (
 
       <hr className="line" />
 
-      <div className="readDiv">
-      <label className="insertLabel">View records for any given Author</label>
-      <input type='text' id='readName' placeholder='Name of Author'></input>
-      <button onClick={this.handleReadClick}>Submit</button>
-      </div>
-
-      <hr className="line" />
-
       <div className="updateDiv">
       <label className="insertLabel">Update the number of citations for an Author</label>
       <input type='text' id='updateName' placeholder='Name of Author'></input>
@@ -149,6 +133,7 @@ return (
       <input type='text' id='delName' placeholder='Name of Author'></input>
       <button onClick={this.handleDeleteClick}>Submit</button>
       </div>
+
     </div>
   );
 }
