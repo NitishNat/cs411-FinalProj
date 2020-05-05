@@ -5,8 +5,8 @@ var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "localhost",
-  user: "admin",
-  password: "106126",
+  user: "root",
+  password: "12345678",
   database: "GoogleScholar",
   multipleStatements: true
 });
@@ -34,6 +34,29 @@ router.get('/researcherData', function(req, res, next) {
     }   
   })
 });
+
+
+router.get('/unaffiliatedPapers', function(req, res, next) {
+  //var authorName = req.query.name;
+  //console.log(authorName);
+  con.query("select title from paper where affiliation = 'Unknown affiliation' group by title union select author_name from researcher where total_citations = 0 limit 10;", function(err, output) {
+
+    
+    
+    
+  //con.query("SET @searched_author = '"+ authorName +"';CALL find_popular_authors(@searched_author, @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture);SELECT @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture;", function(err, output) {
+
+  //con.query("SET @searched_author = '"+ authorName +"';CALL find_popular_authors(@searched_author, @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture);SELECT @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture;", function(err, output) {
+    // con.query("select * from researcher where author_name = '" + authorName + "'", function(err, output) {
+     if (err)
+       throw err;
+    else {
+      console.log(output);
+      res.send(output);
+    }   
+  })
+});
+
 
 // "SET searched_author = '"+ authorName +"';CALL find_popular_authors(searched_author, author_id, author_name, affiliation, total_citations, interests, url_picture);SELECT author_id, author_name, affiliation, total_citations, interests, url_picture;"
 router.post('/addResearcherRecord', function(req, res, next) {
