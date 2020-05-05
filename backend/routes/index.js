@@ -24,17 +24,18 @@ router.get('/researcherData', function(req, res, next) {
   var authorName = req.query.name;
   console.log(authorName);
   
-  con.query("SET @searched_author = '" + authorName + "'; CALL find_popular_authors(@searched_author, @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture); SELECT @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture;", function(err, output) {
-    if (err)
-      throw err;
-    res.send(output);  
+  con.query("SET @searched_author = '"+ authorName +"';CALL find_popular_authors(@searched_author, @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture);SELECT @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture;", function(err, output) {
+    // con.query("select * from researcher where author_name = '" + authorName + "'", function(err, output) {
+     if (err)
+       throw err;
+    else {
+      console.log(output[2][0]);
+      res.send(output[2][0]);
+    }   
   })
 });
 
-// SET @author_name = 'bob';
-// CALL find_popular_authors(@author_name, @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture);
-// SELECT @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture;
-// select * from (exec procedure @author_name = "???"
+// "SET searched_author = '"+ authorName +"';CALL find_popular_authors(searched_author, author_id, author_name, affiliation, total_citations, interests, url_picture);SELECT author_id, author_name, affiliation, total_citations, interests, url_picture;"
 router.post('/addResearcherRecord', function(req, res, next) {
 
   var authorData = req.body;

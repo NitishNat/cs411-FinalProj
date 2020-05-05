@@ -33,9 +33,11 @@ const requestOptions = {
 fetch('http://localhost:3002/researcherData?name=' + authorName, requestOptions)
 .then(response => response.json())
 .then(data => {
-let result = "ID :" + data[0].author_id + ", Name : " + data[0].author_name + ", Affiliation : " + data[0].affiliation + ", Total Citations : " + data[0].total_citations + ", Interests : " + data[0].interests + ", Picture URL : " + data[0].url_picture;
+// let result = "ID :" + data[0].author_id + ", Name : " + data[0].author_name + ", Affiliation : " + data[0].affiliation + ", Total Citations : " + data[0].total_citations + ", Interests : " + data[0].interests + ", Picture URL : " + data[0].url_picture;
 //alert(result);
-this.setState({title: data[0].author_name,  aname: "Name : " + data[0].author_name, aid: "ID :" + data[0].author_id, affi: "Affiliation : " + data[0].affiliation, cite:  "Total Citations : " + data[0].total_citations, inte:  "Interests : " + data[0].interests, pic: data[0].url_picture});
+// console.log(data["@author_name"]);
+// console.log("hello");
+this.setState({title: data['@author_name'],  aname: "Name : " + data['@author_name'], aid: "ID :" + data['@author_id'], affi: "Affiliation : " + data['@affiliation'], cite:  "Total Citations : " + data['@total_citations'], inte:  "Interests : " + data['@interests'], pic: data['@url_picture']});
 document.getElementById("image").src = this.state.pic;
 })
 .catch(error => {

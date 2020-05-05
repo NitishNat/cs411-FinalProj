@@ -83,7 +83,7 @@ return (
 
     <div className="nav">
       <Menu>
-            <Menu.Item style = {{flexDirection: 'row',width: "10%",margin: 0}}>    
+            <Menu.Item >    
                 <Link to="/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
                     <div>Modify Database</div>
                 </Link>
