@@ -8,7 +8,7 @@ class Page1 extends React.Component{
     render() {
         return (
             <div className="main">
-              <h1 style={{textAlign: 'center', fontWeight: 'bold',paddingTop: "2em", background: "#dbc537", color: "white",fontSize: '30px'}}>Hey everyone, we are RUNTIME TERROR! <br/><br/> </h1>
+              <h1 style={{textAlign: 'center', fontWeight: 'bold',paddingTop: "2em", background: "#dbc537", color: "white",fontSize: '30px'}}>Google Scholar Visualizer <br/><br/> </h1>
 
             <div className="nav">
               <Menu>
@@ -20,6 +20,11 @@ class Page1 extends React.Component{
               <Menu.Item>
                 <Link to="/searchpage/" style={{color:'black'}}>
                     <div>Search for Authors</div>
+                </Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link to="/unaffiliatedPapers/" style={{color:'black'}}>
+                    <div>Find Unaffiliated Papers</div>
                 </Link>
               </Menu.Item>
               <Menu.Item>
