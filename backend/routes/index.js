@@ -5,8 +5,8 @@ var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "12345678",
+  user: "admin",
+  password: "106126",
   database: "GoogleScholar",
   multipleStatements: true
 });
