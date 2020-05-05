@@ -5,8 +5,8 @@ var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "localhost",
-  user: "admin",
-  password: "106126",
+  user: "root",
+  password: "12345678",
   database: "GoogleScholar",
   multipleStatements: true
 });
@@ -34,6 +34,70 @@ router.get('/researcherData', function(req, res, next) {
     }   
   })
 });
+
+
+router.get('/unaffiliatedPapers', function(req, res, next) {
+  //var authorName = req.query.name;
+  //console.log(authorName);
+  con.query("select title from paper where affiliation = 'Unknown affiliation' group by title union select author_name from researcher where total_citations = 0 limit 10;", function(err, output) {
+
+    
+    
+    
+  //con.query("SET @searched_author = '"+ authorName +"';CALL find_popular_authors(@searched_author, @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture);SELECT @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture;", function(err, output) {
+
+  //con.query("SET @searched_author = '"+ authorName +"';CALL find_popular_authors(@searched_author, @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture);SELECT @author_id, @author_name, @affiliation, @total_citations, @interests, @url_picture;", function(err, output) {
+    // con.query("select * from researcher where author_name = '" + authorName + "'", function(err, output) {
+     if (err)
+       throw err;
+    else {
+      console.log(output);
+      res.send(output);
+    }   
+  })
+});
+
+
+
+
+
+router.get('/noPaperAuthor', function(req, res, next) {
+  //var authorName = req.query.name;
+  //console.log(authorName);
+  con.query("select interests, count(author_id) as num from researcher where interests != '' and author_id not in (select distinct AU.author_id from researcher AU, paper AR where AU.author_name = AR.author_name) group by interests order by num desc limit 10;", function(err, output) {
+
+ 
+     if (err)
+       throw err;
+    else {
+      console.log(output);
+      res.send(output);
+    }   
+  })
+});
+
+
+
+router.get('/advancedFunction', function(req, res, next) {
+
+  con.query("select * from popular_authors order by author_count desc;", function(err, output) {
+
+
+
+
+     if (err)
+       throw err;
+    else {
+      console.log(output);
+      res.send(output);
+    }   
+  })
+});
+
+
+
+
+
 
 // "SET searched_author = '"+ authorName +"';CALL find_popular_authors(searched_author, author_id, author_name, affiliation, total_citations, interests, url_picture);SELECT author_id, author_name, affiliation, total_citations, interests, url_picture;"
 router.post('/addResearcherRecord', function(req, res, next) {
