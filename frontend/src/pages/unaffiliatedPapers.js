@@ -84,12 +84,12 @@ return (
                 </Link>
             </Menu.Item> 
             <Menu.Item>
-                <Link to="/searchpage/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
+                <Link to="/searchpage/" style={{color:'black'}}>
                     <div>Search for Authors</div>
                 </Link>
             </Menu.Item>
             <Menu.Item>
-                <Link to="/unaffiliatedPapers/" style={{color:'black'}}>
+                <Link to="/unaffiliatedPapers/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
                     <div>Find Unaffiliated Papers</div>
                 </Link>
             </Menu.Item>

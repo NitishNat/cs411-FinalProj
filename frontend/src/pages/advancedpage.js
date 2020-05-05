@@ -67,7 +67,7 @@ this.forceUpdate();
       let sTenDisplay = <label>{sTen}</label>
         return (
             <div className="main">
-              <h1 style={{textAlign: 'center', fontWeight: 'bold',paddingTop: "2em", background: "#dbc537", color: "white",fontSize: '30px'}}>Hey everyone, we are RUNTIME TERROR! <br/><br/> </h1>
+              <h1 style={{textAlign: 'center', fontWeight: 'bold',paddingTop: "2em", background: "#dbc537", color: "white",fontSize: '30px'}}>Google Scholar Visualizer <br/><br/> </h1>
 
             <div className="nav">
               <Menu>
