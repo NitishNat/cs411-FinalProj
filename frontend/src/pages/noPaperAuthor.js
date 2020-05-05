@@ -84,7 +84,7 @@ return (
                 </Link>
             </Menu.Item> 
             <Menu.Item>
-                <Link to="/searchpage/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
+                <Link to="/searchpage/" style={{color:'black'}}>
                     <div>Search for Authors</div>
                 </Link>
             </Menu.Item>
@@ -94,7 +94,7 @@ return (
                 </Link>
             </Menu.Item>
             <Menu.Item>
-                <Link to="/noPaperAuthor/" style={{color:'black'}}>
+                <Link to="/noPaperAuthor/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
                     <div>Find Number of Authors Who Don't Have Papers in Different Fields by Count </div>
                 </Link>
             </Menu.Item>
