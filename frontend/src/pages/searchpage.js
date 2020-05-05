@@ -88,6 +88,11 @@ return (
                 </Link>
             </Menu.Item>
             <Menu.Item>
+                <Link to="/noPaperAuthor/" style={{color:'black'}}>
+                    <div>Find Number of Authors Who Don't Have Papers in Different Fields by Count </div>
+                </Link>
+            </Menu.Item>
+            <Menu.Item>
                 <Link to="/advancedpage/" style={{color:'black'}}>
                     <div>Popular Authors</div>
                 </Link>

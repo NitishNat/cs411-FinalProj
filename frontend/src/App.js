@@ -7,6 +7,7 @@ import Home from "./pages/homepage";
 import Page1 from "./pages/searchpage";
 import Page2 from "./pages/advancedpage";
 import Page3 from "./pages/unaffiliatedPapers";
+import Page4 from "./pages/noPaperAuthor";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
                 </Route>
                 <Route exact path="/unaffiliatedPapers">
                     <Page3 />
+                </Route>
+                <Route exact path="/noPaperAuthor">
+                    <Page4 />
                 </Route>
                 <Route exact path="/">
                     <Home />
