@@ -6,12 +6,11 @@ import './searchpage.css';
 
 import {Form, Button, Card, Alert} from "react-bootstrap"
 
-class Page3 extends React.Component {
+class Page5 extends React.Component {
 
     constructor() {
         super();
-        this.state = {
-        searchResult: "",
+        this.state = {searchResult: "",
         one: '',
         two: '',
         three: '',
@@ -27,23 +26,20 @@ class Page3 extends React.Component {
     }
 
 handleReadClick() {
-//let authorName = document.getElementById('readName').value;
+let authorName = document.getElementById('readName').value;
 const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     };
-fetch('http://localhost:3002/unaffiliatedPapers', requestOptions)
+fetch('http://localhost:3002/listOfPaper?name=' + authorName, requestOptions)
 .then(response => response.json())
 .then(data => {
-// let result = "ID :" + data[0].author_id + ", Name : " + data[0].author_name + ", Affiliation : " + data[0].affiliation + ", Total Citations : " + data[0].total_citations + ", Interests : " + data[0].interests + ", Picture URL : " + data[0].url_picture;
-//alert(result);
-// console.log(data["@author_name"]);
-// console.log("hello");
-this.setState({one: data[0].title,  two: data[1].title, three: data[2].title, four: data[3].title, five: data[4].title, six: data[5].title, seven: data[6].title, eight: data[7].title, nine: data[8].title, ten: data[9].title});
-//document.getElementById("image").src = this.state.pic;
+
+    this.setState({one: data[0].title,  two: data[1].title, three: data[2].title, four: data[3].title, five: data[4].title, six: data[5].title, seven: data[6].title, eight: data[7].title, nine: data[8].title, ten: data[9].title});
+
 })
 .catch(error => {
-            alert("No such Author exists in the database!");
+            alert("Not Enough Papers in the Database!");
         });
 this.forceUpdate();
 }
@@ -74,7 +70,7 @@ render() {
 return (
     
     <div className="main">
-      <h1 style={{textAlign: 'center', fontWeight: 'bold',paddingTop: "2em", background: "#dbc537", color: "white",fontSize: '30px'}}>Google Scholar Visualizer <br/><br/> </h1>
+      <h1 style={{textAlign: 'center', fontWeight: 'bold',paddingTop: "2em", background: "#dbc537", color: "white",fontSize: '30px'}}>Google Scholar Visualizer<br/><br/> </h1>
 
     <div className="nav">
       <Menu>
@@ -84,12 +80,12 @@ return (
                 </Link>
             </Menu.Item> 
             <Menu.Item>
-                <Link to="/searchpage/" style={{color:'black'}}>
+                <Link to="/searchpage/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
                     <div>Search for Authors</div>
                 </Link>
             </Menu.Item>
             <Menu.Item>
-                <Link to="/unaffiliatedPapers/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
+                <Link to="/unaffiliatedPapers/" style={{color:'black'}}>
                     <div>Find Unaffiliated Papers</div>
                 </Link>
             </Menu.Item>
@@ -111,16 +107,16 @@ return (
             </Menu>
       </div>
 
-      <hr className="line" />
+            <hr className="line" />
 
       <div className="readDiv">
-      <label className="insertLabel">View Papers that are Unaffiliated or have Authors with no Citations</label>
-      
+      <label className="insertLabel">Choose an Author whose Articles you want to see</label>
+      <input type='text' id='readName' placeholder='Name of Author'></input>
       <button onClick={this.handleReadClick}>Submit</button> <br />
 
 <Card id="card" style={{ width: '25rem' }}>
                         <Card.Body>
-                            <Card.Title> Unaffiliated Papers or Authors without Citations</Card.Title>
+                            <Card.Title> Articles Written by the Author</Card.Title>
                             <Card.Text>
                             <ul>
                                 <li><div> 
@@ -186,5 +182,4 @@ return (
 }
   
 }
-
-export default Page3;
+export default Page5;

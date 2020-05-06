@@ -33,10 +33,7 @@ const requestOptions = {
 fetch('http://localhost:3002/researcherData?name=' + authorName, requestOptions)
 .then(response => response.json())
 .then(data => {
-// let result = "ID :" + data[0].author_id + ", Name : " + data[0].author_name + ", Affiliation : " + data[0].affiliation + ", Total Citations : " + data[0].total_citations + ", Interests : " + data[0].interests + ", Picture URL : " + data[0].url_picture;
-//alert(result);
-// console.log(data["@author_name"]);
-// console.log("hello");
+
 this.setState({title: data['@author_name'],  aname: "Name : " + data['@author_name'], aid: "ID :" + data['@author_id'], affi: "Affiliation : " + data['@affiliation'], cite:  "Total Citations : " + data['@total_citations'], inte:  "Interests : " + data['@interests'], pic: data['@url_picture']});
 document.getElementById("image").src = this.state.pic;
 })
@@ -90,6 +87,11 @@ return (
             <Menu.Item>
                 <Link to="/noPaperAuthor/" style={{color:'black'}}>
                     <div>Find Number of Authors Who Don't Have Papers in Different Fields by Count </div>
+                </Link>
+            </Menu.Item>
+            <Menu.Item>
+                <Link to="/listOfPapers/" style={{color:'black'}}>
+                    <div>Search for Papers written by an Author</div>
                 </Link>
             </Menu.Item>
             <Menu.Item>

@@ -5,8 +5,8 @@ var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "localhost",
-  user: "admin",
-  password: "106126",
+  user: "root",
+  password: "12345678",
   database: "GoogleScholar",
   multipleStatements: true
 });
@@ -31,6 +31,24 @@ router.get('/researcherData', function(req, res, next) {
     else {
       console.log(output[2][0]);
       res.send(output[2][0]);
+    }   
+  })
+});
+
+
+
+router.get('/listOfPaper', function(req, res, next) {
+  var authorName = req.query.name;
+  console.log(authorName);
+  
+  con.query("select ar.title from researcher as au JOIN paper as ar on au.author_name = ar.author_name where ar.title is not null and au.author_name = '" + authorName + "' order by ar.title asc limit 10;", function(err, output) {
+
+  
+     if (err)
+       throw err;
+    else {
+      console.log(output);
+      res.send(output);
     }   
   })
 });

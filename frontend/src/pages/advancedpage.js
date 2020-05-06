@@ -118,6 +118,11 @@ this.forceUpdate();
                 </Link>
               </Menu.Item>
               <Menu.Item>
+                <Link to="/listOfPapers/" style={{color:'black'}}>
+                    <div>Search for Papers written by an Author</div>
+                </Link>
+            </Menu.Item>
+              <Menu.Item>
                 <Link to="/advancedpage/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
                     <div>Popular Authors</div>
                 </Link>
