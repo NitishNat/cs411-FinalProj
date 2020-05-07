@@ -80,7 +80,7 @@ return (
                 </Link>
             </Menu.Item> 
             <Menu.Item>
-                <Link to="/searchpage/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
+                <Link to="/searchpage/" style={{color:'black'}}>
                     <div>Search for Authors</div>
                 </Link>
             </Menu.Item>
@@ -95,7 +95,7 @@ return (
                 </Link>
             </Menu.Item>
             <Menu.Item>
-                <Link to="/listOfPapers/" style={{color:'black'}}>
+                <Link to="/listOfPapers/" style={{color:'red',fontSize: '16px', fontWeight: 'bold'}}>
                     <div>Search for Papers written by an Author</div>
                 </Link>
             </Menu.Item>
